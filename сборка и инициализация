@@ -1,0 +1,53 @@
+1. git init
+2. Создаем удаленный репозиторий
+3. git remote add origin ссылка на репозиторий
+4. npm init. Далее отвечаем на вопросы
+5. правим package.json, если нужно. Например "private": true
+6. npm install webpack webpack-cli --save-dev устанавливаем webpack
+7. создаем в корне webpack.config.js
+
+const path = require('path')
+
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+}
+
+8. Добавляем скрипты в package.json
+"scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"start": "webpack",
+	"build": "webpack --mode production"
+},
+
+9. Запускаем скрипты
+	npm run start или npm run build
+	
+10. Правим .gitignore
+	node_modules
+	.idea
+	dist
+	
+11. Чтобы запустить собранный js:
+	node dist/bundle.js
+	
+Начальная инициализация закончена
+=================================================
+
+Дальше устанавливаем плагины. Идём на https://webpack.js.org , далее documentation, далее plugins. Читаем документацию и устанавливаем плагины:
+
+HtmlWebpackPlugin - для работы с html
+CopyWebpackPlugin - для копирования favicon
+Clean-webpack-plugin - для очистки папку dist
+mini-css-extract-plugin - выносит css из js в отдельный файл 
+
+Дальше устанавливаем лоадеры. Идём на https://webpack.js.org , далее documentation, далее loaders. Читаем документацию и устанавливаем лоадеры:
+
+css-loaders
+sass-loader
+babel-loader
